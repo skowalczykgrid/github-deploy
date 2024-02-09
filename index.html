@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Advanced Landing Page</title>
+    <script type="module" src="/main.js" defer></script>
+  </head>
+  <body>
+    <div class="cookies">
+      <img src="img/cookies.svg" alt="cookies" />
+      <h5 class="body-semibold color-primary-dark">We are using cookies</h5>
+      <img src="img/cross.svg" alt="" class="cookies__cross" />
+    </div>
+    <section class="section-hero">
+      <img src="img/blurs/blur-header.svg" alt="" class="header__blur" />
+      <header class="header">
+        <img src="img/Logo.svg" alt="" class="header__logo" />
+
+        <input type="checkbox" id="hamburger" />
+        <label class="burger-menu" for="hamburger">
+          <div class="burger-menu__line"></div>
+        </label>
+
+        <nav class="navigation">
+          <ul class="navigation__list">
+            <li><a class="btn btn-transparent-black" href="#">About Us</a></li>
+            <li>
+              <a class="btn btn-transparent-black" href="#">Article</a>
+            </li>
+            <li>
+              <div class="dropdown">
+                <a class="btn btn-transparent-black" href="#">Property</a>
+                <div class="dropdown__content">
+                  <a href="#">HTML</a>
+                  <a href="#">CSS</a>
+                  <a href="#">JavaScript</a>
+                  <a href="#">React</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a class="btn btn-primary-light" href="#">Sign up</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="section-hero__main">
+        <img
+          src="img/blurs/blur-header.svg"
+          alt=""
+          class="section-hero__blur"
+        />
+        <div class="section-hero__main-content">
+          <h1 class="heading-xl color-black">
+            find the place to live <span>your dreams</span> easily here
+          </h1>
+          <h5 class="body-light color-grey-2">
+            Everything you need about finding your place to live will be here,
+            where it will be easier for you
+          </h5>
+          <div class="search-bar">
+            <img src="img/location.svg" alt="location" />
+            <input type="text" placeholder="Search for location" />
+            <button class="btn btn-primary">Search</button>
+          </div>
+          <div class="partnership">
+            <h5 class="body-light color-grey-2">Our Partnership</h5>
+            <div class="partnership__logos">
+              <img
+                src="img/traveloka.png"
+                alt="traveloka"
+                class="partnership__logo"
+              />
+              <img src="img/tiket.png" alt="tiket" class="partnership__logo" />
+              <img
+                src="img/airbnb.png"
+                alt="airbnb"
+                class="partnership__logo"
+              />
+              <img
+                src="img/tripadvisor.png"
+                alt="tripadvisor"
+                class="partnership__logo"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-hero__photo">
+        <div class="slider-wrapper">
+          <div class="slider">
+            <div class="hero-box">
+              <div class="hero-box__photos">
+                <img
+                  src="img/avatar3.jpeg"
+                  class="hero-box__photos--1"
+                  alt="a man"
+                  draggable="false"
+                />
+                <img
+                  src="img/avatar1.jpeg"
+                  class="hero-box__photos--2"
+                  alt="a woman"
+                  draggable="false"
+                />
+                <img
+                  src="img/avatar2.jpeg"
+                  class="hero-box__photos--3"
+                  alt="a womamn"
+                  draggable="false"
+                />
+              </div>
+              <div class="hero-box__text">
+                <h5 class="body-semibold color-black">1K+ People</h5>
+                <p class="label-small color-grey-2">
+                  Successfully Getting Home
+                </p>
+              </div>
+            </div>
+            <div class="hero-box">
+              <div class="hero-box__photos">
+                <img
+                  src="img/househero.png"
+                  class="hero-box__photos--1"
+                  alt="a
+                house"
+                  draggable="false"
+                />
+              </div>
+              <div class="hero-box__text">
+                <h5 class="body-semibold color-black">56 Houses</h5>
+                <p class="label-small color-grey-2">Sold Monthly</p>
+              </div>
+            </div>
+            <div class="hero-box">
+              <div class="hero-box__photos">
+                <img
+                  src="img/avatar10.jpeg"
+                  class="hero-box__photos--1"
+                  alt="a
+                house"
+                  draggable="false"
+                />
+              </div>
+              <div class="hero-box__text">
+                <h5 class="body-semibold color-black">4K+</h5>
+                <p class="label-small color-grey-2">
+                  People Looking for New Homes
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

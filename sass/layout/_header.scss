@@ -1,0 +1,70 @@
+.header {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  min-height: 90px;
+  //   overflow: hidden;
+
+  @media only screen and (min-width: 768px) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding-top: 45px;
+  }
+
+  &__blur {
+    // display: none;
+
+    position: absolute;
+    z-index: -10;
+    // background-size: cover;
+    max-width: 100%;
+    // max-width: 100%;
+    // object-fit: fill;
+    @media only screen and (min-width: 768px) {
+      //   display: block;
+    }
+  }
+
+  &__logo {
+    @media only screen and (min-width: 1024px) {
+      padding-left: 124px;
+      padding-top: 0px;
+    }
+  }
+
+  &:has(#hamburger:checked) {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  #hamburger {
+    display: none;
+
+    &:checked + .burger-menu > .burger-menu__line {
+      background-color: transparent;
+
+      &::after {
+        transform: rotate(135deg);
+        top: 0;
+        background-color: $color-black;
+      }
+
+      &::before {
+        transform: rotate(-135deg);
+        top: 0;
+        background-color: $color-black;
+      }
+    }
+
+    &:checked ~ nav {
+      display: block;
+      //   opacity: 0;
+    }
+  }
+}

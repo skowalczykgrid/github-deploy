@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  // letter-spacing: 0.36px;
+  font-family: $font-primary;
+  position: relative;
+
+  max-width: 1440px;
+  margin: 0 auto;
+
+  &:has(#hamburger:checked) {
+    overflow: hidden;
+  }
+}

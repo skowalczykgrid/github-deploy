@@ -1,0 +1,28 @@
+.cookies {
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  align-items: center;
+  gap: 12px;
+
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+
+  background-color: $color-primary-light;
+  border-radius: 30px;
+
+  width: minmax(min-content, 80vw);
+  padding: 8px 20px;
+
+  transition: 0.2s;
+
+  &__cross {
+    justify-self: end;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
