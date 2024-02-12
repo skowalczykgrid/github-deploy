@@ -4,6 +4,12 @@
   line-height: 50px;
 }
 
+.heading-large {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+}
+
 .body-semibold {
   font-family: 16px;
   font-weight: 600;
@@ -18,4 +24,9 @@
 .label-small {
   font-size: 12px;
   font-weight: 300;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
 }
