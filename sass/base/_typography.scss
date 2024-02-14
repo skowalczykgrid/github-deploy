@@ -1,32 +1,51 @@
-.heading-xl {
+.text-heading-xl {
   font-size: 40px;
   text-transform: capitalize;
   line-height: 50px;
+  font-weight: 900;
 }
 
-.heading-large {
+.text-heading-large {
   font-weight: 600;
   font-size: 32px;
   line-height: 40px;
 }
 
-.body-semibold {
+.text-heading-medium {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.text-heading-small {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 25px;
+}
+
+.text-body-semibold {
   font-family: 16px;
   font-weight: 600;
 }
 
-.body-light {
+.text-body-light {
   font-weight: 300;
   font-size: 16px;
   line-height: 24px;
 }
 
-.label-small {
+.text-label-small {
   font-size: 12px;
   font-weight: 300;
 }
 
-.label {
+.text-label {
   font-size: 14px;
   font-weight: 400;
+}
+
+.text-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
 }

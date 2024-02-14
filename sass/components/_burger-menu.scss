@@ -12,11 +12,10 @@
 
   @media only screen and (min-width: 768px) {
     background-color: $color-white;
-
     border-radius: 50px;
   }
 
-  @media only screen and (min-width: 1300px) {
+  @media only screen and (min-width: 1024px) {
     display: none;
   }
 
@@ -25,11 +24,6 @@
     height: 3px;
     background-color: $color-black;
     position: relative;
-
-    @media only screen and (min-width: 768px) {
-      // background-color: $color-white;
-    }
-
     transition: 0.05s;
 
     &::before,
@@ -40,10 +34,6 @@
       height: 3px;
       transition: 0.2s;
       background-color: $color-black;
-
-      @media only screen and (min-width: 768px) {
-        // background-color: $color-white;
-      }
     }
 
     &::before {

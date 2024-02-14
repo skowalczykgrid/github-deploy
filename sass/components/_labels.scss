@@ -1,0 +1,35 @@
+.house-label {
+  border: none;
+  border-radius: 32px;
+  height: 34px;
+  width: max-content;
+  padding: 8px 16px;
+  display: flex;
+
+  align-items: center;
+  font-family: $font-primary;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 17.5px;
+  font-weight: 500;
+
+  &__img {
+    height: 14px;
+    width: 12px;
+  }
+
+  &--popular {
+    background-color: $color-danger-light;
+    color: $color-danger;
+  }
+
+  &--new-house {
+    background-color: $color-info-light;
+    color: $color-info;
+  }
+
+  &--best-deals {
+    background-color: $color-primary-light;
+    color: $color-primary;
+  }
+}

@@ -8,9 +8,8 @@
   top: 90px;
   z-index: 100;
   background-color: white;
-  // transform: translateY(-100vh);
 
-  @media only screen and (min-width: 1300px) {
+  @media only screen and (min-width: 1024px) {
     display: block;
     position: static;
     width: auto;
@@ -24,30 +23,53 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    // flex-wrap: wrap;
+
     justify-self: center;
     margin-top: 50px;
     align-items: center;
     height: 100%;
     gap: 32px;
 
-    @media only screen and (min-width: 1300px) {
-      // display: grid;
-      // grid-template-columns: 1fr 1fr;
+    @media only screen and (min-width: 1024px) {
       flex-direction: row;
       margin-top: auto;
       gap: 16px;
     }
 
+    @media only screen and (min-width: 1375px) {
+      gap: 32px;
+    }
+
     a:visited,
     a:link {
       text-decoration: none;
+
+      @media only screen and (max-width: 1023px) {
+        height: 48px;
+        width: 140px;
+      }
+
+      @media only screen and (min-width: 1024px) {
+        width: 100px;
+        padding: 8px 10px;
+      }
+
+      @media only screen and (min-width: 1250px) {
+        width: 124px;
+        padding: 8px 16px;
+      }
     }
 
     .btn-transparent-black {
-      @media only screen and (min-width: 1300px) {
+      @media only screen and (min-width: 1024px) {
         border: 1px solid $color-white;
         color: $color-white;
+      }
+    }
+
+    .btn-primary-light {
+      @media only screen and (max-width: 1023px) {
+        margin-top: 16px;
       }
     }
   }

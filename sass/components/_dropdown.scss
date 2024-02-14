@@ -1,23 +1,29 @@
 .dropdown {
   position: relative;
 
+  .btn {
+    z-index: 50;
+    position: relative;
+  }
+
   &__content {
     display: none;
     width: 100%;
-
+    z-index: 10;
     position: absolute;
-    top: 17px;
-    background-color: transparent;
-    width: 140px;
-    border: 1px solid $color-white;
+    top: 50%;
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid $color-black;
     border-top: none;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-
     cursor: pointer;
+
     a {
       display: block;
-      color: $color-white;
+      color: $color-black;
       text-decoration: none;
       padding: 10px 15px;
       transition: 0.05s;
@@ -27,16 +33,24 @@
       }
 
       &:hover {
-        // transform: translateY(-1px);
-        color: $color-black;
+        color: $color-primary;
       }
     }
   }
 
   &:hover > &__content {
     display: block;
-    @media only screen and (max-width: 1300px) {
+    background-color: white;
+    color: $color-black;
+
+    @media only screen and (max-width: 1024px) {
       display: none;
     }
+  }
+
+  &:hover > .btn {
+    color: $color-black;
+    background-color: $color-white;
+    border: 1px solid $color-black;
   }
 }

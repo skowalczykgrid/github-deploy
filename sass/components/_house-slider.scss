@@ -1,0 +1,53 @@
+.house-slider {
+  display: flex;
+  gap: 32px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  padding: 0 20px;
+  scroll-padding-inline-start: 20px;
+
+  @media only screen and (min-width: 1024px) {
+    padding: 0 100px;
+    scroll-padding-inline-start: 100px;
+  }
+
+  @media only screen and (min-width: 1250px) {
+    padding: 0 124px;
+    scroll-padding-inline-start: 124px;
+  }
+
+  @media only screen and (max-width: 410px) {
+    flex-direction: column;
+    overflow: auto;
+    scrollbar-width: auto;
+  }
+
+  &--no-snap {
+    scroll-snap-type: none;
+  }
+
+  &--snap {
+    scroll-snap-type: x mandatory;
+  }
+
+  &--dragging {
+    scroll-behavior: auto;
+    cursor: grab;
+  }
+
+  &-wrapper {
+    overflow: hidden;
+
+    @media only screen and (max-width: 410px) {
+      overflow: auto;
+    }
+  }
+
+  .house-card {
+    scroll-snap-align: start;
+  }
+}

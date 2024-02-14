@@ -1,20 +1,57 @@
 .slider {
   display: flex;
   gap: 16px;
-  overflow: hidden;
+  overflow-x: auto;
   padding: 20px;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  scroll-padding-inline-start: 20px;
 
   @media only screen and (max-width: 350px) {
     padding: 0px;
-    gap: 0;
+    scroll-padding-inline-start: 0px;
+    gap: 0px;
+  }
+  @media only screen and (min-width: 425px) {
+    padding-right: 100px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 32px;
+    padding-right: 100px;
+    scroll-padding-inline-start: 32px;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 48px;
+    padding-right: 100px;
+    scroll-padding-inline-start: 48px;
+  }
+
+  &--no-snap {
+    scroll-snap-type: none;
+  }
+
+  &--snap {
+    scroll-snap-type: x mandatory;
+  }
+
+  &--dragging {
+    scroll-behavior: auto;
+    cursor: grab;
   }
 
   .hero-box {
+    scroll-snap-align: start;
+
     @media only screen and (max-width: 350px) {
       border-radius: 0;
 
       &:not(:last-child) {
-        border-right: solid 1px $color-grey-1;
+        border-right: solid 1px $color-grey-light;
       }
     }
   }
@@ -29,10 +66,6 @@
     bottom: 0px;
     left: 0px;
 
-    max-width: calc(100%);
-
-    @media only screen and (max-width: 350px) {
-      max-width: 100%;
-    }
+    max-width: 100%;
   }
 }

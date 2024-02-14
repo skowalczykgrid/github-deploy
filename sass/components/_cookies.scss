@@ -1,4 +1,7 @@
-.cookies {
+.cookies-popup {
+  opacity: 0;
+  visibility: hidden;
+
   display: grid;
   grid-template-columns: max-content max-content 1fr;
   align-items: center;
@@ -15,8 +18,6 @@
 
   width: minmax(min-content, 80vw);
   padding: 8px 20px;
-
-  transition: 0.2s;
 
   &__cross {
     justify-self: end;
