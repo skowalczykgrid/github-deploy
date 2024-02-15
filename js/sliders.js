@@ -10,6 +10,10 @@ let initialTouchPos;
 let movementX;
 
 const draggingSliderHero = (e) => {
+  if (e.type === "touchmove") {
+    sliderHero.classList.remove("slider--no-snap");
+    return;
+  }
   if (!isDragging) return;
   e.preventDefault();
   sliderHero.classList.add("slider--dragging");
@@ -25,6 +29,10 @@ const draggingSliderHero = (e) => {
 };
 
 const draggingSliderHouse = (e) => {
+  if (e.type === "touchmove") {
+    sliderHouse.classList.remove("house-slider--no-snap");
+    return;
+  }
   if (!isDragging) return;
   e.preventDefault();
   sliderHouse.classList.add("house-slider--dragging");
@@ -48,6 +56,10 @@ const dragStart = (e) => {
 const dragStopHouse = (e) => {
   isDragging = false;
   sliderHouse.classList.remove("house-slider--dragging");
+
+  // setTimeout(() => {
+  //   sliderHouse.classList.remove("house-slider--no-snap");
+  // }, 1000);
 
   const snapPoints = Array.from(sliderHouse.querySelectorAll(".house-card")).map((card) => {
     if (window.innerWidth > 1250) {
@@ -102,7 +114,10 @@ const dragStopHero = (e) => {
 sliderHero.addEventListener("mousedown", dragStart);
 sliderHouse.addEventListener("mousedown", dragStart);
 
+sliderHero.addEventListener("touchmove", draggingSliderHero);
 sliderHero.addEventListener("mousemove", draggingSliderHero);
+
+sliderHouse.addEventListener("touchmove", draggingSliderHouse);
 sliderHouse.addEventListener("mousemove", draggingSliderHouse);
 
 document.addEventListener("mouseup", dragStopHero);
