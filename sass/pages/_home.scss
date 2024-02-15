@@ -10,19 +10,19 @@
     background: radial-gradient(
         ellipse at top,
         rgb(130, 247, 255) 0%,
-        rgba(130, 255, 210, 0.5606836484593838) 25%,
+        rgba(130, 255, 210, 0.2506836484593838) 35%,
         #fff 60%
       ),
       radial-gradient(
         ellipse at bottom,
         rgb(130, 247, 255) 0%,
-        rgba(130, 255, 210, 0.5606836484593838) 25%,
+        rgba(130, 255, 210, 0.2506836484593838) 35%,
         #fff 60%
       );
     max-width: 100%;
     width: 900px;
     height: 600px;
-    left: -150px;
+    left: -200px;
     position: absolute;
     z-index: -10;
     overflow-x: hidden;
@@ -326,10 +326,6 @@
 
     @media only screen and (min-width: 1250px) {
       margin-right: 124px;
-    }
-
-    @media only screen and (max-width: 410px) {
-      display: none;
     }
 
     svg {

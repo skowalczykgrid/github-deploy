@@ -3,25 +3,27 @@
   flex-direction: column;
   gap: 8px;
 
-  @media only screen and (max-width: 410px) {
-    gap: 4px;
-  }
-
   &__img-container {
     position: relative;
     margin-bottom: 16px;
 
     @media only screen and (max-width: 410px) {
-      margin-bottom: 0;
+      max-height: 382px;
     }
 
     .house-card__img {
       max-width: 376px;
       max-height: 382px;
       border-radius: 24px;
+      object-fit: cover;
 
-      @media only screen and (max-width: 410px) {
-        width: 100%;
+      @media only screen and (max-width: 768px) {
+        width: 350px;
+        max-height: 355px;
+      }
+
+      @media only screen and (max-width: 425px) {
+        width: calc(100vw - 40px);
       }
     }
   }
@@ -32,18 +34,8 @@
     left: 16px;
   }
 
-  h3 {
-    @media only screen and (max-width: 410px) {
-      margin-bottom: -5px;
-    }
-  }
-
   h4 {
     margin-bottom: 16px;
-
-    @media only screen and (max-width: 410px) {
-      margin-bottom: 6px;
-    }
   }
 
   &__user-info {

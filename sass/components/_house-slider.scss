@@ -20,12 +20,6 @@
     scroll-padding-inline-start: 124px;
   }
 
-  @media only screen and (max-width: 410px) {
-    flex-direction: column;
-    overflow: auto;
-    scrollbar-width: auto;
-  }
-
   &--no-snap {
     scroll-snap-type: none;
   }
@@ -41,10 +35,6 @@
 
   &-wrapper {
     overflow: hidden;
-
-    @media only screen and (max-width: 410px) {
-      overflow: auto;
-    }
   }
 
   .house-card {
