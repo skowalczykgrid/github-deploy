@@ -4,6 +4,7 @@
   grid-template-columns: 50% 50%;
   align-items: center;
   min-height: 90px;
+  margin-bottom: -115px;
 
   @media only screen and (min-width: 768px) {
     grid-column: 1 / 3;
