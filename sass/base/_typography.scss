@@ -24,8 +24,14 @@
 }
 
 .text-body-semibold {
-  font-family: 16px;
+  font-size: 16px;
   font-weight: 600;
+}
+
+.text-body-medium {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 .text-body-light {
