@@ -57,10 +57,6 @@ const dragStopHouse = (e) => {
   isDragging = false;
   sliderHouse.classList.remove("house-slider--dragging");
 
-  // setTimeout(() => {
-  //   sliderHouse.classList.remove("house-slider--no-snap");
-  // }, 1000);
-
   const snapPoints = Array.from(sliderHouse.querySelectorAll(".house-card")).map((card) => {
     if (window.innerWidth > 1250) {
       return card.offsetLeft - 124;

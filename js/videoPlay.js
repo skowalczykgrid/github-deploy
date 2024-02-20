@@ -3,14 +3,40 @@ const youtubeVideo = document.querySelector(".youtube-video");
 const playIcon = document.querySelector(".play-icon");
 const images = document.querySelector(".section-ready-to-sell-video__images");
 const wrapper = document.querySelector(".section-ready-to-sell-video__wrapper");
+const closeButton = document.querySelector(".video-close");
+const toHideElements = document.querySelector(".video-to-hide");
 
-wrapper.addEventListener("click", () => {
-  miniature.style.display = "none";
-  playIcon.style.display = "none";
-  images.style.display = "none";
+const playVideo = (e, event) => {
+  if (event === "keypress" && e.key != "Enter") return;
 
-  wrapper.style.width = "100%";
+  toHideElements.classList.add("video-hidden");
+
+  closeButton.style.display = "block";
+  wrapper.style.cursor = "auto";
+  closeButton.style.cursor = "pointer";
+
+  wrapper.classList.add("video-stretch");
 
   youtubeVideo.style.display = "block";
   youtubeVideo.src += "&autoplay=1";
+};
+
+const closeVideo = (e, event) => {
+  if (event === "keypress" && e.key != "Enter") return;
+
+  e.stopPropagation();
+
+  toHideElements.classList.remove("video-hidden");
+  closeButton.style.display = "none";
+  wrapper.style.cursor = "pointer";
+
+  wrapper.classList.remove("video-stretch");
+
+  youtubeVideo.style.display = "none";
+  youtubeVideo.src += "&autoplay=0";
+};
+
+["click", "keypress"].forEach((event) => {
+  wrapper.addEventListener(event, (e) => playVideo(e, event));
+  closeButton.addEventListener(event, (e) => closeVideo(e, event));
 });
