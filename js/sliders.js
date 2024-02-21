@@ -1,13 +1,29 @@
+const body = document.querySelector("body");
+
 const sliderHero = document.querySelector(".slider");
 
 const sliderHouse = document.querySelector(".house-slider");
 const sliderHouseArrowIconsContainer = document.querySelector(".house-slider__buttons");
 const sliderHouseArrowIcons = sliderHouseArrowIconsContainer.querySelectorAll("svg");
-const houseCard = sliderHouse.querySelectorAll(".house-card")[0];
+
+const sliderReview = document.querySelector(".review-slider");
+const sliderReviewArray = Array.from(sliderReview.querySelectorAll(".review-card"));
+const sliderDots = document.querySelector(".review-slider-dots");
+let sliderDotsArray = Array.from(sliderDots.querySelectorAll(".review-slider-dot"));
 
 let isDragging = false;
 let initialTouchPos;
 let movementX;
+
+let activeDotIndex;
+
+let currentWindowWidth = window.innerWidth;
+let currentBodyWidth = body.getBoundingClientRect().width;
+
+window.addEventListener("resize", () => {
+  currentBodyWidth = body.getBoundingClientRect().width;
+  currentWindowWidth = currentBodyWidth;
+});
 
 const draggingSliderHero = (e) => {
   if (e.type === "touchmove") {
@@ -47,6 +63,29 @@ const draggingSliderHouse = (e) => {
   initialTouchPos = currentTouchPos;
 };
 
+const draggingSliderReview = (e) => {
+  if (e.type === "touchmove") {
+    sliderReview.classList.remove("review-slider--no-snap");
+    sliderReview.addEventListener("scrollend", touchStopReviewSlider);
+    return;
+  }
+  sliderReview.removeEventListener("scrollend", touchStopReviewSlider);
+
+  if (!isDragging) return;
+  e.preventDefault();
+
+  sliderReview.classList.add("review-slider--dragging");
+  if (e.type === "mousemove") {
+    sliderReview.classList.add("review-slider--no-snap");
+  }
+
+  const currentTouchPos = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+  movementX = initialTouchPos - currentTouchPos;
+
+  sliderReview.scrollLeft += movementX;
+  initialTouchPos = currentTouchPos;
+};
+
 const dragStart = (e) => {
   isDragging = true;
   e.preventDefault();
@@ -58,9 +97,9 @@ const dragStopHouse = (e) => {
   sliderHouse.classList.remove("house-slider--dragging");
 
   const snapPoints = Array.from(sliderHouse.querySelectorAll(".house-card")).map((card) => {
-    if (window.innerWidth > 1250) {
+    if (currentWindowWidth > 1250) {
       return card.offsetLeft - 124;
-    } else if (window.innerWidth > 1024) {
+    } else if (currentWindowWidth > 1024) {
       return card.offsetLeft - 100;
     } else {
       return card.offsetLeft - 20;
@@ -80,14 +119,89 @@ const dragStopHouse = (e) => {
   });
 };
 
+const dragStopReview = (e) => {
+  isDragging = false;
+  sliderReview.classList.remove("review-slider--dragging");
+
+  const snapPoints = sliderReviewArray.map((card, index) => {
+    if (index === 0) return -70;
+    return card.offsetLeft - 32 - (currentBodyWidth - 64 - card.offsetWidth) / 2;
+  });
+
+  const currentScrollLeft = sliderReview.scrollLeft;
+  const targetScrollLeft = snapPoints.reduce((previousSnapPoint, currentSnapPoint, index) => {
+    return Math.abs(currentSnapPoint - currentScrollLeft) < Math.abs(previousSnapPoint - currentScrollLeft)
+      ? currentSnapPoint
+      : previousSnapPoint;
+  });
+
+  sliderReview.scrollTo({
+    left: targetScrollLeft,
+    behavior: "smooth",
+  });
+
+  sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
+  activeDotIndex = snapPoints.indexOf(targetScrollLeft);
+  sliderDotsArray[activeDotIndex].classList.add("review-slider-dot--active");
+};
+
+function sliderReviewDotsListener() {
+  sliderReviewArray.forEach((_, index) => {
+    let dot = document.createElement("div");
+    dot.classList.add("review-slider-dot");
+
+    sliderDots.appendChild(dot);
+    sliderDotsArray = Array.from(sliderDots.querySelectorAll(".review-slider-dot"));
+
+    dot.addEventListener("click", () => {
+      sliderDotsArray = Array.from(sliderDots.querySelectorAll(".review-slider-dot"));
+
+      sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
+      sliderReviewArray[index].scrollIntoView({ behavior: "smooth" });
+      dot.classList.add("review-slider-dot--active");
+    });
+
+    dragStopReview();
+  });
+}
+
+function initialReviewSliderState() {
+  sliderReviewArray[1].scrollIntoView();
+  sliderDotsArray[1].classList.add("review-slider-dot--active");
+  dragStopReview();
+}
+
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+function touchStopReviewSlider(e) {
+  let visibleIndex;
+
+  sliderReviewArray.forEach((card, index) => {
+    if (isInViewport(card)) {
+      visibleIndex = index;
+    }
+  });
+
+  sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
+  activeDotIndex = sliderDotsArray[visibleIndex].classList.add("review-slider-dot--active");
+}
+
 const dragStopHero = (e) => {
   isDragging = false;
   sliderHero.classList.remove("slider--dragging");
 
   const snapPoints = Array.from(sliderHero.querySelectorAll(".hero-box")).map((box) => {
-    if (window.innerWidth > 1250) {
+    if (currentWindowWidth > 1250) {
       return box.offsetLeft - 124;
-    } else if (window.innerWidth > 1024) {
+    } else if (currentWindowWidth > 1024) {
       return box.offsetLeft - 100;
     } else {
       return box.offsetLeft - 20;
@@ -107,8 +221,12 @@ const dragStopHero = (e) => {
   });
 };
 
+sliderReviewDotsListener();
+initialReviewSliderState();
+
 sliderHero.addEventListener("mousedown", dragStart);
 sliderHouse.addEventListener("mousedown", dragStart);
+sliderReview.addEventListener("mousedown", dragStart);
 
 sliderHero.addEventListener("touchmove", draggingSliderHero);
 sliderHero.addEventListener("mousemove", draggingSliderHero);
@@ -116,8 +234,14 @@ sliderHero.addEventListener("mousemove", draggingSliderHero);
 sliderHouse.addEventListener("touchmove", draggingSliderHouse);
 sliderHouse.addEventListener("mousemove", draggingSliderHouse);
 
+sliderReview.addEventListener("touchmove", draggingSliderReview);
+sliderReview.addEventListener("mousemove", draggingSliderReview);
+
 document.addEventListener("mouseup", dragStopHero);
 document.addEventListener("mouseup", dragStopHouse);
+document.addEventListener("mouseup", dragStopReview);
+
+sliderReview.addEventListener("scrollend", touchStopReviewSlider);
 
 // SliderHouse arrows
 

@@ -1,0 +1,49 @@
+.review-slider {
+  display: flex;
+  gap: 32px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  padding: 0 70px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0 20px;
+  }
+
+  &--no-snap {
+    scroll-snap-type: none;
+  }
+
+  &--snap {
+    scroll-snap-type: x mandatory;
+  }
+
+  &--dragging {
+    scroll-behavior: auto;
+    cursor: grab;
+  }
+
+  .review-card {
+    scroll-snap-align: center;
+  }
+
+  &-dots {
+    display: flex;
+    gap: 16px;
+
+    margin: 0 auto;
+  }
+
+  &-dot {
+    width: 8px;
+    height: 8px;
+    background-color: $color-grey-light;
+    border-radius: 50px;
+
+    &--active {
+      background-color: $color-grey-dark;
+    }
+  }
+}
