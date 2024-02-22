@@ -33,7 +33,7 @@ const closeVideo = (e, event) => {
   wrapper.classList.remove("video-stretch");
 
   youtubeVideo.style.display = "none";
-  youtubeVideo.src += "&autoplay=0";
+  youtubeVideo.src = youtubeVideo.src.replace("&autoplay=1", "&autoplay=0");
 };
 
 ["click", "keypress"].forEach((event) => {

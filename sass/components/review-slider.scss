@@ -8,7 +8,7 @@
 
   padding: 0 70px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 880px) {
     padding: 0 20px;
   }
 
@@ -41,6 +41,7 @@
     height: 8px;
     background-color: $color-grey-light;
     border-radius: 50px;
+    cursor: pointer;
 
     &--active {
       background-color: $color-grey-dark;

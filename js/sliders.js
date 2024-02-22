@@ -64,6 +64,7 @@ const draggingSliderHouse = (e) => {
 };
 
 const draggingSliderReview = (e) => {
+  sliderReview.removeEventListener("scrollend", touchStopReviewSlider);
   if (e.type === "touchmove") {
     sliderReview.classList.remove("review-slider--no-snap");
     sliderReview.addEventListener("scrollend", touchStopReviewSlider);
@@ -145,7 +146,7 @@ const dragStopReview = (e) => {
   sliderDotsArray[activeDotIndex].classList.add("review-slider-dot--active");
 };
 
-function sliderReviewDotsListener() {
+function sliderReviewDotsListener(e) {
   sliderReviewArray.forEach((_, index) => {
     let dot = document.createElement("div");
     dot.classList.add("review-slider-dot");
@@ -154,21 +155,18 @@ function sliderReviewDotsListener() {
     sliderDotsArray = Array.from(sliderDots.querySelectorAll(".review-slider-dot"));
 
     dot.addEventListener("click", () => {
-      sliderDotsArray = Array.from(sliderDots.querySelectorAll(".review-slider-dot"));
+      sliderReview.classList.remove("review-slider--no-snap");
 
       sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
-      sliderReviewArray[index].scrollIntoView({ behavior: "smooth" });
+      sliderReviewArray[index].scrollIntoView({ behavior: "smooth", inline: "center" });
       dot.classList.add("review-slider-dot--active");
     });
-
-    dragStopReview();
   });
 }
 
 function initialReviewSliderState() {
-  sliderReviewArray[1].scrollIntoView();
   sliderDotsArray[1].classList.add("review-slider-dot--active");
-  dragStopReview();
+  sliderReviewArray[1].scrollIntoView({ inline: "center" });
 }
 
 function isInViewport(element) {
@@ -182,10 +180,12 @@ function isInViewport(element) {
 }
 
 function touchStopReviewSlider(e) {
+  let visibleCard;
   let visibleIndex;
 
   sliderReviewArray.forEach((card, index) => {
     if (isInViewport(card)) {
+      visibleCard = card;
       visibleIndex = index;
     }
   });
@@ -241,29 +241,30 @@ document.addEventListener("mouseup", dragStopHero);
 document.addEventListener("mouseup", dragStopHouse);
 document.addEventListener("mouseup", dragStopReview);
 
-sliderReview.addEventListener("scrollend", touchStopReviewSlider);
-
 // SliderHouse arrows
 
 sliderHouseArrowIcons.forEach((icon, idx) => {
-  icon.addEventListener("click", () => {
-    sliderHouseArrowIcons.forEach((icon) => {
-      icon.classList.remove("house-slider__active-button");
+  ["click", "keypress"].forEach((event) => {
+    icon.addEventListener(event, (e) => {
+      if (event === "keypress" && e.key != "Enter") return;
+      sliderHouseArrowIcons.forEach((icon) => {
+        icon.classList.remove("house-slider__active-button");
+      });
+
+      sliderHouse.classList.remove("house-slider--no-snap");
+      icon.classList.add("house-slider__active-button");
+
+      if (idx === 0) {
+        sliderHouse.scrollTo({
+          left: sliderHouse.scrollLeft - sliderHouse.firstElementChild.offsetWidth,
+          behavior: "smooth",
+        });
+      } else {
+        sliderHouse.scrollTo({
+          left: sliderHouse.scrollLeft + sliderHouse.firstElementChild.offsetWidth,
+          behavior: "smooth",
+        });
+      }
     });
-
-    sliderHouse.classList.remove("house-slider--no-snap");
-    icon.classList.add("house-slider__active-button");
-
-    if (idx === 0) {
-      sliderHouse.scrollTo({
-        left: sliderHouse.scrollLeft - sliderHouse.firstElementChild.offsetWidth,
-        behavior: "smooth",
-      });
-    } else {
-      sliderHouse.scrollTo({
-        left: sliderHouse.scrollLeft + sliderHouse.firstElementChild.offsetWidth,
-        behavior: "smooth",
-      });
-    }
   });
 });
