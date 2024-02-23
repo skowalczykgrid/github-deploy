@@ -158,7 +158,7 @@ function sliderReviewDotsListener(e) {
       sliderReview.classList.remove("review-slider--no-snap");
 
       sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
-      sliderReviewArray[index].scrollIntoView({ behavior: "smooth", inline: "center" });
+      sliderReviewArray[index].scrollIntoView({ inline: "center", block: "center" });
       dot.classList.add("review-slider-dot--active");
     });
   });
@@ -166,7 +166,7 @@ function sliderReviewDotsListener(e) {
 
 function initialReviewSliderState() {
   sliderDotsArray[1].classList.add("review-slider-dot--active");
-  sliderReviewArray[1].scrollIntoView({ inline: "center" });
+  sliderReviewArray[1].scrollIntoView({ behavior: "instant", inline: "center" });
 }
 
 function isInViewport(element) {
