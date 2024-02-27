@@ -28,6 +28,10 @@
     max-width: 580px;
     cursor: pointer;
 
+    &:hover {
+      text-decoration: underline;
+    }
+
     @media only screen and (max-width: 600px) {
       flex-direction: column;
       gap: 12px;
@@ -87,9 +91,11 @@
     }
 
     &--big {
-      height: 100%;
       flex-direction: column;
       gap: 25px;
+      position: sticky;
+
+      top: 35px;
 
       @media only screen and (max-width: 600px) {
         gap: 12px;

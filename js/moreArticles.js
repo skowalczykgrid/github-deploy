@@ -1,4 +1,4 @@
-const articles = document.querySelectorAll(".article");
+let articles = document.querySelectorAll(".article");
 let smallArticleContainer = document.querySelector(".articles__small");
 let bigArticleContainer = document.querySelector(".articles__big");
 let smallArticles = smallArticleContainer.querySelectorAll(".article");
@@ -11,20 +11,16 @@ window.addEventListener("resize", () => (viewPortWidth = window.innerWidth));
 
 function articleChange() {
   articles.forEach((article) => {
+    let articleClone = article.cloneNode(true);
     article.addEventListener("click", () => {
       if (article.classList.contains("article--big") || viewPortWidth <= 600) return;
 
-      let articleIndex = Array.from(smallArticleContainer.children).indexOf(article);
-
       articles.forEach((art) => art.classList.remove("article--big"));
-      article.classList.add("article--big");
+      articleClone.classList.add("article--big");
 
-      let oldBigArticle = bigArticleContainer.querySelector(".article");
       bigArticleContainer.innerHTML = "";
-      bigArticleContainer.appendChild(article);
-
-      smallArticleContainer.insertBefore(oldBigArticle, smallArticleContainer.children[articleIndex]);
-      smallArticleContainer = document.querySelector(".articles__small");
+      bigArticleContainer.appendChild(articleClone);
+      articleClone.classList.remove("article--hidden");
     });
   });
 }
@@ -32,6 +28,8 @@ function articleChange() {
 function moreArticles() {
   smallArticles = smallArticleContainer.querySelectorAll(".article");
   smallArticles.forEach((article) => article.classList.remove("article--hidden"));
+  articles = document.querySelectorAll(".article");
+  articles.forEach((article) => article.classList.remove("article--hidden"));
   button.textContent = "Less Articles";
 
   button.removeEventListener("click", moreArticles);
