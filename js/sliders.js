@@ -158,7 +158,11 @@ function sliderReviewDotsListener(e) {
       sliderReview.classList.remove("review-slider--no-snap");
 
       sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
-      sliderReviewArray[index].scrollIntoView({ inline: "center", block: "center" });
+      if (index === 1 || index === sliderReviewArray.length - 2) {
+        sliderReviewArray[index].scrollIntoView({ block: "nearest", inline: "center" });
+      } else {
+        sliderReviewArray[index].scrollIntoView({ block: "nearest" });
+      }
       dot.classList.add("review-slider-dot--active");
     });
   });
