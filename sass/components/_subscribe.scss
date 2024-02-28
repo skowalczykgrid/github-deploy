@@ -120,6 +120,7 @@
     z-index: 10;
     display: grid;
     grid-template-columns: min-content 1fr;
+    position: relative;
 
     align-items: center;
     gap: 10px;
@@ -130,7 +131,7 @@
     padding: 8px 4px 4px 4px;
 
     background-color: $color-white;
-    border: 1px solid $color-grey-light;
+    border: 2px solid $color-grey-light;
     border-radius: 30px;
 
     @media only screen and (min-width: 425px) {
@@ -185,6 +186,21 @@
         justify-self: end;
         width: 150px;
       }
+    }
+
+    &__error {
+      position: absolute;
+      bottom: -30px;
+      left: 67px;
+      color: $color-danger;
+    }
+
+    &--error {
+      border: 2px solid $color-danger;
+    }
+
+    &--success {
+      border: 2px solid $color-primary;
     }
   }
 }

@@ -31,7 +31,7 @@
     z-index: 10;
     position: absolute;
     top: 100%;
-    width: 100%;
+    padding: 8px;
 
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid $color-white;
@@ -46,17 +46,21 @@
       text-decoration: none;
       padding: 10px 15px;
       transition: 0.05s;
+      width: 100% !important;
+      border-radius: 28px;
 
       &:hover,
       &:focus {
-        color: $color-primary;
+        color: $color-white;
+        background-color: $color-primary;
       }
     }
   }
 
   &:hover > &__content,
   &:focus-within > &__content {
-    display: block;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255, 255, 255, 0.1);
     color: $color-black;
 

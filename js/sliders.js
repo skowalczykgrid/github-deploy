@@ -167,6 +167,7 @@ function sliderReviewDotsListener(e) {
 function initialReviewSliderState() {
   sliderDotsArray[1].classList.add("review-slider-dot--active");
   sliderReviewArray[1].scrollIntoView({ behavior: "instant", inline: "center" });
+  document.body.scrollIntoView();
 }
 
 function isInViewport(element) {

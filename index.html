@@ -989,7 +989,9 @@
               type="text"
               placeholder="Your email here"
               aria-label="email"
+              class="email-bar__input"
             />
+            <div class="email-bar__error"></div>
             <button class="btn btn-primary">Subscribe Now</button>
           </div>
         </div>
@@ -1022,12 +1024,17 @@
             </div>
             <div class="label-input">
               <label for="form_education">Education</label>
-              <select name="form_education" id="form_education">
-                <option value="html">HTML</option>
-                <option value="css">CSS</option>
-                <option value="javascript">JavaScript</option>
-                <option value="react">React</option>
-              </select>
+              <div class="dropdown-form" id="form_education" tabindex="0">
+                <a class="dropdown-form__property" aria-label="Education"
+                  >Select</a
+                >
+                <div class="dropdown-form__content">
+                  <a aria-label="HTML" tabindex="0">HTML</a>
+                  <a aria-label="CSS" tabindex="0">CSS</a>
+                  <a aria-label="JS" tabindex="0">JS</a>
+                  <a aria-label="React" tabindex="0">React</a>
+                </div>
+              </div>
             </div>
 
             <div class="label-input label-input--message">
@@ -1047,7 +1054,7 @@
             </div>
 
             <div class="form_consent_container">
-              <input type="checkbox" id="form_consent" />
+              <input type="checkbox" id="form_consent" tabindex="0" />
               <p class="text-label color-grey-dark">
                 I give consent to the processing of my personal data given in
                 the contact form above under the terms and conditions of Grid

@@ -94,11 +94,12 @@
       flex-direction: column;
       gap: 25px;
       position: sticky;
-
+      max-height: 513px;
       top: 35px;
 
       @media only screen and (max-width: 600px) {
         gap: 12px;
+        display: none;
       }
 
       .article__content {

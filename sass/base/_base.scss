@@ -6,6 +6,16 @@
   box-sizing: inherit;
 }
 
+html {
+  // @media only screen and (max-width: 1440px) {
+  //   overflow-x: hidden;
+  // }
+
+  @media only screen and (hover: none) and (pointer: coarse) {
+    overflow-x: hidden;
+  }
+}
+
 body {
   box-sizing: border-box;
   font-family: $font-primary;
@@ -13,6 +23,8 @@ body {
 
   max-width: 1440px;
   margin: 0 auto;
+
+  overflow-x: hidden;
 
   &:has(#hamburger:checked) {
     overflow: hidden;

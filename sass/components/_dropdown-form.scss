@@ -1,0 +1,68 @@
+.dropdown-form {
+  position: relative;
+  display: flex;
+
+  &::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-image: url(../../img/utilities/arrow-down.svg);
+    background-position: center;
+    position: absolute;
+    right: 24px;
+    top: 19px;
+    z-index: 300;
+  }
+
+  &__property {
+    z-index: 300;
+
+    align-self: center;
+  }
+
+  &__content {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    width: 100.5%;
+    padding: 8px;
+    z-index: 100;
+
+    background-color: $color-white;
+    border: 1px solid $color-grey-light;
+    border-top: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+
+    a {
+      display: block;
+      color: $color-black;
+      text-decoration: none;
+      padding: 10px 15px;
+      transition: 0.05s;
+      border-radius: 28px;
+
+      &:first-child {
+        margin-top: 10px;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: $color-primary-light;
+      }
+    }
+  }
+
+  &:hover > &__content,
+  &:focus-within > &__content {
+    display: block;
+  }
+
+  &:hover::after,
+  &:focus-within::after {
+    transform: rotate(180deg);
+  }
+}
