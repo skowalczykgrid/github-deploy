@@ -1,8 +1,7 @@
 .footer {
   display: grid;
   grid-template-columns: calc(40% + 32px) 1fr 1fr 1fr;
-
-  margin-bottom: 105px;
+  position: relative;
   padding: 0 124px;
 
   @media only screen and (max-width: 1250px) {
@@ -78,5 +77,42 @@
       flex-direction: column;
       gap: 16px;
     }
+  }
+}
+
+footer {
+  padding-bottom: 105px;
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: url(../../img/footer/blur-2.svg);
+    background-repeat: no-repeat;
+    width: 800px;
+    height: 800px;
+    right: -150px;
+    bottom: 0;
+    position: absolute;
+    z-index: -10;
+    overflow-x: hidden;
+
+    @media only screen and (max-width: 768px) {
+      //   right: -300px;
+      //   top: -100px;
+    }
+
+    // @media only screen and (max-width: 600px) {
+    //   right: -100px;
+    //   top: -100px;
+    // }
+
+    // @media only screen and (max-width: 425px) {
+    //   right: -100px;
+    //   top: 0;
+    // }
+    // @media only screen and (max-width: 320px) {
+    //   top: 100px;
+    //   right: -50px;
+    // }
   }
 }
