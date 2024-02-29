@@ -19,7 +19,7 @@ function validateEmail(email) {
   return emailRegex.test(email);
 }
 
-emailInput.addEventListener("input", () => {
+emailInput.addEventListener("blur", () => {
   const enteredEmail = emailInput.value.trim();
 
   if (enteredEmail === "") {
@@ -27,6 +27,7 @@ emailInput.addEventListener("input", () => {
     emailBar.classList.remove("email-bar--error", "email-bar--success");
   } else if (!validateEmail(enteredEmail)) {
     emailError.textContent = "Invalid email address";
+    emailBar.classList.remove("email-bar--success");
     emailBar.classList.add("email-bar--error");
   } else {
     emailError.textContent = "";

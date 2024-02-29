@@ -24,7 +24,7 @@ body {
   max-width: 1440px;
   margin: 0 auto;
 
-  overflow-x: hidden;
+  overflow-x: clip;
 
   &:has(#hamburger:checked) {
     overflow: hidden;
