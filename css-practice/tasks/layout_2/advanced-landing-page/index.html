@@ -195,26 +195,25 @@
           Our Recommendation
         </p>
         <h2 class="text-heading-large color-black">Featured House</h2>
-        <div class="section-recommendations__type-buttons">
-          <button
-            class="btn btn-transparent-primary btn-transparent-primary--active"
-            data-type="house"
-          >
-            <img src="img/house-slider-img/house.svg" alt="house" />
-            House
-          </button>
-          <button
-            class="btn btn-transparent-primary"
-            data-type="villa"
-            id="villa"
-          >
-            <img src="img/house-slider-img/villa.svg" alt="villa" />
-            Villa
-          </button>
-          <button class="btn btn-transparent-primary" data-type="apartament">
-            <img src="img/house-slider-img/apartament.svg" alt="apartament" />
-            Apartament
-          </button>
+        <div class="type-buttons-wrapper">
+          <div class="section-recommendations__type-buttons">
+            <button class="btn btn-transparent-primary" data-type="house">
+              <img src="img/house-slider-img/house.svg" alt="house" />
+              House
+            </button>
+            <button
+              class="btn btn-transparent-primary"
+              data-type="villa"
+              id="villa"
+            >
+              <img src="img/house-slider-img/villa.svg" alt="villa" />
+              Villa
+            </button>
+            <button class="btn btn-transparent-primary" data-type="apartament">
+              <img src="img/house-slider-img/apartament.svg" alt="apartament" />
+              Apartament
+            </button>
+          </div>
         </div>
         <div class="house-slider__buttons">
           <svg
@@ -253,7 +252,7 @@
         </div>
         <div class="house-slider-wrapper">
           <div class="house-slider">
-            <article class="house-card house-card">
+            <article class="house-card house-card" data-type="house">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-1.png"
@@ -279,7 +278,7 @@
                 </div>
               </div>
             </article>
-            <article class="house-card">
+            <article class="house-card" data-type="villa">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-2.png"
@@ -307,7 +306,7 @@
                 </div>
               </div>
             </article>
-            <article class="house-card">
+            <article class="house-card" data-type="house">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-3.png"
@@ -335,7 +334,7 @@
                 </div>
               </div>
             </article>
-            <article class="house-card">
+            <article class="house-card" data-type="villa">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-4.png"
@@ -363,7 +362,7 @@
                 </div>
               </div>
             </article>
-            <article class="house-card">
+            <article class="house-card" data-type="villa">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-1.png"
@@ -389,7 +388,7 @@
                 </div>
               </div>
             </article>
-            <article class="house-card">
+            <article class="house-card" data-type="apartament">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-2.png"
@@ -417,7 +416,7 @@
                 </div>
               </div>
             </article>
-            <article class="house-card">
+            <article class="house-card" data-type="apartament">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-3.png"
@@ -445,7 +444,35 @@
                 </div>
               </div>
             </article>
-            <article class="house-card">
+            <article class="house-card" data-type="villa">
+              <div class="house-card__img-container">
+                <img
+                  src="img/house-slider-img/house-card-4.png"
+                  alt="house"
+                  class="house-card__img"
+                />
+                <label class="house-label house-label--popular">
+                  <img
+                    src="img/house-slider-img/fire.svg"
+                    alt="trending fire"
+                    class="house-label__img"
+                  />
+                  Popular
+                </label>
+              </div>
+              <h3 class="text-heading-medium color-black">Cosmo's House</h3>
+              <h4 class="text-heading-small color-grey-dark">$ 22.000.000</h4>
+              <div class="house-card__user-info">
+                <img src="img/house-slider-img/avatar4.jpeg" alt="a woman" />
+                <div class="house-card__user-info-text">
+                  <h5 class="text-subtitle color-black">Jenny Wilson</h5>
+                  <p class="text-label color-grey">
+                    Preston Rd. Inglewood, Maine 98380
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="house-card" data-type="house">
               <div class="house-card__img-container">
                 <img
                   src="img/house-slider-img/house-card-4.png"

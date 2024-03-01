@@ -190,9 +190,19 @@
 
     &__error {
       position: absolute;
+      width: max-content;
       bottom: -30px;
       left: 67px;
       color: $color-danger;
+
+      @media only screen and (max-width: 520px) {
+        bottom: -25px;
+      }
+
+      @media only screen and (max-width: 520px) {
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
 
     &--error {

@@ -44,5 +44,10 @@ const dropdownItems = dropdownContent.querySelectorAll("a");
 dropdownItems.forEach((item) => {
   item.addEventListener("click", () => {
     dropdownSelected.textContent = item.textContent;
+    dropdownContent.classList.add("hidden");
   });
 });
+
+dropdown.addEventListener("mouseover", () =>
+  dropdownContent.classList.remove("hidden")
+);

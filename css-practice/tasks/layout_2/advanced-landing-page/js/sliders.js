@@ -3,13 +3,20 @@ const body = document.querySelector("body");
 const sliderHero = document.querySelector(".slider");
 
 const sliderHouse = document.querySelector(".house-slider");
-const sliderHouseArrowIconsContainer = document.querySelector(".house-slider__buttons");
-const sliderHouseArrowIcons = sliderHouseArrowIconsContainer.querySelectorAll("svg");
+const sliderHouseArrowIconsContainer = document.querySelector(
+  ".house-slider__buttons"
+);
+const sliderHouseArrowIcons =
+  sliderHouseArrowIconsContainer.querySelectorAll("svg");
 
 const sliderReview = document.querySelector(".review-slider");
-const sliderReviewArray = Array.from(sliderReview.querySelectorAll(".review-card"));
+const sliderReviewArray = Array.from(
+  sliderReview.querySelectorAll(".review-card")
+);
 const sliderDots = document.querySelector(".review-slider-dots");
-let sliderDotsArray = Array.from(sliderDots.querySelectorAll(".review-slider-dot"));
+let sliderDotsArray = Array.from(
+  sliderDots.querySelectorAll(".review-slider-dot")
+);
 
 let isDragging = false;
 let initialTouchPos;
@@ -37,7 +44,8 @@ const draggingSliderHero = (e) => {
     sliderHero.classList.add("slider--no-snap");
   }
 
-  const currentTouchPos = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+  const currentTouchPos =
+    e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
   movementX = initialTouchPos - currentTouchPos;
 
   sliderHero.scrollLeft += movementX;
@@ -56,7 +64,8 @@ const draggingSliderHouse = (e) => {
     sliderHouse.classList.add("house-slider--no-snap");
   }
 
-  const currentTouchPos = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+  const currentTouchPos =
+    e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
   movementX = initialTouchPos - currentTouchPos;
 
   sliderHouse.scrollLeft += movementX;
@@ -80,7 +89,8 @@ const draggingSliderReview = (e) => {
     sliderReview.classList.add("review-slider--no-snap");
   }
 
-  const currentTouchPos = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+  const currentTouchPos =
+    e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
   movementX = initialTouchPos - currentTouchPos;
 
   sliderReview.scrollLeft += movementX;
@@ -97,7 +107,9 @@ const dragStopHouse = (e) => {
   isDragging = false;
   sliderHouse.classList.remove("house-slider--dragging");
 
-  const snapPoints = Array.from(sliderHouse.querySelectorAll(".house-card")).map((card) => {
+  const snapPoints = Array.from(
+    sliderHouse.querySelectorAll(".house-card")
+  ).map((card) => {
     if (currentWindowWidth > 1250) {
       return card.offsetLeft - 124;
     } else if (currentWindowWidth > 1024) {
@@ -108,11 +120,14 @@ const dragStopHouse = (e) => {
   });
 
   const currentScrollLeft = sliderHouse.scrollLeft;
-  const targetScrollLeft = snapPoints.reduce((previousSnapPoint, currentSnapPoint) => {
-    return Math.abs(currentSnapPoint - currentScrollLeft) < Math.abs(previousSnapPoint - currentScrollLeft)
-      ? currentSnapPoint
-      : previousSnapPoint;
-  });
+  const targetScrollLeft = snapPoints.reduce(
+    (previousSnapPoint, currentSnapPoint) => {
+      return Math.abs(currentSnapPoint - currentScrollLeft) <
+        Math.abs(previousSnapPoint - currentScrollLeft)
+        ? currentSnapPoint
+        : previousSnapPoint;
+    }
+  );
 
   sliderHouse.scrollTo({
     left: targetScrollLeft,
@@ -126,22 +141,29 @@ const dragStopReview = (e) => {
 
   const snapPoints = sliderReviewArray.map((card, index) => {
     if (index === 0) return -70;
-    return card.offsetLeft - 32 - (currentBodyWidth - 64 - card.offsetWidth) / 2;
+    return (
+      card.offsetLeft - 32 - (currentBodyWidth - 64 - card.offsetWidth) / 2
+    );
   });
 
   const currentScrollLeft = sliderReview.scrollLeft;
-  const targetScrollLeft = snapPoints.reduce((previousSnapPoint, currentSnapPoint, index) => {
-    return Math.abs(currentSnapPoint - currentScrollLeft) < Math.abs(previousSnapPoint - currentScrollLeft)
-      ? currentSnapPoint
-      : previousSnapPoint;
-  });
+  const targetScrollLeft = snapPoints.reduce(
+    (previousSnapPoint, currentSnapPoint, index) => {
+      return Math.abs(currentSnapPoint - currentScrollLeft) <
+        Math.abs(previousSnapPoint - currentScrollLeft)
+        ? currentSnapPoint
+        : previousSnapPoint;
+    }
+  );
 
   sliderReview.scrollTo({
     left: targetScrollLeft,
     behavior: "smooth",
   });
 
-  sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
+  sliderDotsArray.forEach((dot) =>
+    dot.classList.remove("review-slider-dot--active")
+  );
   activeDotIndex = snapPoints.indexOf(targetScrollLeft);
   sliderDotsArray[activeDotIndex].classList.add("review-slider-dot--active");
 };
@@ -152,14 +174,21 @@ function sliderReviewDotsListener(e) {
     dot.classList.add("review-slider-dot");
 
     sliderDots.appendChild(dot);
-    sliderDotsArray = Array.from(sliderDots.querySelectorAll(".review-slider-dot"));
+    sliderDotsArray = Array.from(
+      sliderDots.querySelectorAll(".review-slider-dot")
+    );
 
     dot.addEventListener("click", () => {
       sliderReview.classList.remove("review-slider--no-snap");
 
-      sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
+      sliderDotsArray.forEach((dot) =>
+        dot.classList.remove("review-slider-dot--active")
+      );
       if (index === 1 || index === sliderReviewArray.length - 2) {
-        sliderReviewArray[index].scrollIntoView({ block: "nearest", inline: "center" });
+        sliderReviewArray[index].scrollIntoView({
+          block: "nearest",
+          inline: "center",
+        });
       } else {
         sliderReviewArray[index].scrollIntoView({ block: "nearest" });
       }
@@ -170,7 +199,10 @@ function sliderReviewDotsListener(e) {
 
 function initialReviewSliderState() {
   sliderDotsArray[1].classList.add("review-slider-dot--active");
-  sliderReviewArray[1].scrollIntoView({ behavior: "instant", inline: "center" });
+  sliderReviewArray[1].scrollIntoView({
+    behavior: "instant",
+    inline: "center",
+  });
   document.body.scrollIntoView();
 }
 
@@ -179,7 +211,8 @@ function isInViewport(element) {
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
@@ -195,30 +228,39 @@ function touchStopReviewSlider(e) {
     }
   });
 
-  sliderDotsArray.forEach((dot) => dot.classList.remove("review-slider-dot--active"));
-  activeDotIndex = sliderDotsArray[visibleIndex].classList.add("review-slider-dot--active");
+  sliderDotsArray.forEach((dot) =>
+    dot.classList.remove("review-slider-dot--active")
+  );
+  activeDotIndex = sliderDotsArray[visibleIndex].classList.add(
+    "review-slider-dot--active"
+  );
 }
 
 const dragStopHero = (e) => {
   isDragging = false;
   sliderHero.classList.remove("slider--dragging");
 
-  const snapPoints = Array.from(sliderHero.querySelectorAll(".hero-box")).map((box) => {
-    if (currentWindowWidth > 1250) {
-      return box.offsetLeft - 124;
-    } else if (currentWindowWidth > 1024) {
-      return box.offsetLeft - 100;
-    } else {
-      return box.offsetLeft - 20;
+  const snapPoints = Array.from(sliderHero.querySelectorAll(".hero-box")).map(
+    (box) => {
+      if (currentWindowWidth > 1250) {
+        return box.offsetLeft - 124;
+      } else if (currentWindowWidth > 1024) {
+        return box.offsetLeft - 100;
+      } else {
+        return box.offsetLeft - 20;
+      }
     }
-  });
+  );
 
   const currentScrollLeft = sliderHero.scrollLeft;
-  const targetScrollLeft = snapPoints.reduce((previousSnapPoint, currentSnapPoint) => {
-    return Math.abs(currentSnapPoint - currentScrollLeft) < Math.abs(previousSnapPoint - currentScrollLeft)
-      ? currentSnapPoint
-      : previousSnapPoint;
-  });
+  const targetScrollLeft = snapPoints.reduce(
+    (previousSnapPoint, currentSnapPoint) => {
+      return Math.abs(currentSnapPoint - currentScrollLeft) <
+        Math.abs(previousSnapPoint - currentScrollLeft)
+        ? currentSnapPoint
+        : previousSnapPoint;
+    }
+  );
 
   sliderHero.scrollTo({
     left: targetScrollLeft,
@@ -259,16 +301,24 @@ sliderHouseArrowIcons.forEach((icon, idx) => {
       sliderHouse.classList.remove("house-slider--no-snap");
       icon.classList.add("house-slider__active-button");
 
+      let articles = Array.from(sliderHouse.querySelectorAll("article"));
+      let firstArticle = articles.find(
+        (article) => !article.classList.contains("hidden")
+      );
+      console.log("first article", firstArticle);
+
       if (idx === 0) {
         sliderHouse.scrollTo({
-          left: sliderHouse.scrollLeft - sliderHouse.firstElementChild.offsetWidth,
+          left: sliderHouse.scrollLeft - firstArticle.offsetWidth,
           behavior: "smooth",
         });
+        console.log(sliderHouse.firstElementChild);
       } else {
         sliderHouse.scrollTo({
-          left: sliderHouse.scrollLeft + sliderHouse.firstElementChild.offsetWidth,
+          left: sliderHouse.scrollLeft + firstArticle.offsetWidth,
           behavior: "smooth",
         });
+        console.log(sliderHouse.firstElementChild);
       }
     });
   });

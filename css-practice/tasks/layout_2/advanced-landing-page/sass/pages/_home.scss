@@ -275,6 +275,12 @@
     }
   }
 
+  .type-buttons-wrapper {
+    position: relative;
+    z-index: 9999;
+    height: 68px;
+  }
+
   &__type-buttons {
     display: flex;
     justify-self: center;
@@ -345,6 +351,13 @@
         height: 100%;
       }
     }
+  }
+
+  .type-buttons-dropped-down {
+    background-color: $color-white;
+    position: absolute;
+    border-radius: 28px;
+    padding: 0px 20px 20px;
   }
 
   .house-slider__buttons {
