@@ -197,7 +197,10 @@
         <h2 class="text-heading-large color-black">Featured House</h2>
         <div class="type-buttons-wrapper">
           <div class="section-recommendations__type-buttons">
-            <button class="btn btn-transparent-primary" data-type="house">
+            <button
+              class="btn btn-transparent-primary type-button-selected"
+              data-type="house"
+            >
               <img src="img/house-slider-img/house.svg" alt="house" />
               House
             </button>
@@ -1151,17 +1154,27 @@
           <div class="join__form">
             <div class="label-input">
               <label>Name</label>
-              <input type="text" id="form_name" placeholder="Your name" />
+              <input
+                type="text"
+                id="form_name"
+                placeholder="Your name"
+                aria-label="your name"
+              />
             </div>
 
             <div class="label-input">
               <label for="form_surname">Surname</label>
-              <input type="text" id="form_surname" placeholder="Your Surname" />
+              <input
+                type="text"
+                id="form_surname"
+                placeholder="Your Surname"
+                aria-label="your surname"
+              />
             </div>
             <div class="label-input">
               <label for="form_education">Education</label>
               <div class="dropdown-form" id="form_education" tabindex="0">
-                <a class="dropdown-form__property" aria-label="Education"
+                <a class="dropdown-form__property" aria-label="choose education"
                   >Select</a
                 >
                 <div class="dropdown-form__content">
@@ -1180,6 +1193,7 @@
                 id="form_message"
                 placeholder="Message"
                 maxlength="500"
+                aria-label="enter a message"
               ></textarea>
               <div
                 id="form_message-counter"
@@ -1190,7 +1204,12 @@
             </div>
 
             <div class="form_consent_container">
-              <input type="checkbox" id="form_consent" tabindex="0" />
+              <input
+                type="checkbox"
+                id="form_consent"
+                tabindex="0"
+                aria-label="accept conditions"
+              />
               <p class="text-label color-grey-dark">
                 I give consent to the processing of my personal data given in
                 the contact form above under the terms and conditions of Grid

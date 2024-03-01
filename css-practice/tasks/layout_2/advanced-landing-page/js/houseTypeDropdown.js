@@ -91,7 +91,7 @@ document.addEventListener("click", (event) => {
     typeButtons.classList.remove("type-buttons-dropped-down");
     buttonsOpen = !buttonsOpen;
 
-    typeButtonsArray.forEach((btn, index) => {
+    typeButtonsArray.forEach((btn) => {
       viewportMobile &&
         !btn.classList.contains("type-button-selected") &&
         btn.classList.add("type-button-hidden");
