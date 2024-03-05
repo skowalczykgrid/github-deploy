@@ -190,7 +190,7 @@
           </div>
         </div>
       </section>
-      <section class="section-recommendations">
+      <section class="section-recommendations" id="section-recommendations">
         <p class="text-label color-secondary section-recommendations__orange">
           Our Recommendation
         </p>
@@ -624,7 +624,7 @@
           </div>
         </div>
       </section>
-      <section class="section-review">
+      <section class="section-review" id="section-review">
         <p class="text-label color-secondary section-review__orange">
           See Our Reviews
         </p>
@@ -855,7 +855,7 @@
         </div>
         <div class="review-slider-dots"></div>
       </section>
-      <section class="section-articles">
+      <section class="section-articles" id="section-articles">
         <p class="text-label color-secondary section-articles__orange">
           See tips and trick from our partnership
         </p>
@@ -1253,18 +1253,32 @@
         <div class="footer__column">
           <h5 class="text-subtitle color-black">Property</h5>
           <ul>
-            <li class="text-label color-grey">House</li>
-            <li class="text-label color-grey">Apartament</li>
-            <li class="text-label color-grey">Villa</li>
+            <li class="text-label color-grey">
+              <a href="#section-recommendations">House</a>
+            </li>
+            <li class="text-label color-grey">
+              <a href="#section-recommendations">Apartament</a>
+            </li>
+            <li class="text-label color-grey">
+              <a href="#section-recommendations">Villa</a>
+            </li>
           </ul>
         </div>
         <div class="footer__column">
           <h5 class="text-subtitle color-black">Article</h5>
           <ul>
-            <li class="text-label color-grey">New Article</li>
-            <li class="text-label color-grey">Popular Article</li>
-            <li class="text-label color-grey">Most Read</li>
-            <li class="text-label color-grey">Tips & Tricks</li>
+            <li class="text-label color-grey">
+              <a href="#section-articles">New Article</a>
+            </li>
+            <li class="text-label color-grey">
+              <a href="#section-articles">Popular Article</a>
+            </li>
+            <li class="text-label color-grey">
+              <a href="#section-articles">Most Read</a>
+            </li>
+            <li class="text-label color-grey">
+              <a href="#section-articles">Tips & Tricks</a>
+            </li>
           </ul>
         </div>
         <div class="footer__column">
@@ -1273,8 +1287,17 @@
             <li class="text-label color-grey">
               2464 Royal Ln. Mesa, New Jersey 45463
             </li>
-            <li class="text-label color-grey">(671) 555-0110</li>
-            <li class="text-label color-grey">info@hounter.com</li>
+            <li class="text-label color-grey">
+              <address>
+                <a href="tel:(671)555-0110" aria-label="phone number"
+                  >(671) 555-0110</a
+                >
+                <a href="mailto:info@hounter.com" aria-label="email address"
+                  >info@hounter.com</a
+                >
+              </address>
+            </li>
+            <!-- <li class="text-label color-grey">info@hounter.com</li> -->
           </ul>
         </div>
       </div>

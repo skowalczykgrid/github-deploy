@@ -9,5 +9,5 @@ if (!document.cookie.includes("cookies-displayed=true")) {
 cookiesPopup.lastElementChild.addEventListener("click", () => {
   cookiesPopup.classList.add("cookies-hidden");
 
-  document.cookie = "cookies-displayed=true; max-age=20";
+  document.cookie = "cookies-displayed=true; max-age=3600";
 });
