@@ -1,12 +1,13 @@
 const cookiesPopup = document.querySelector(".cookies-popup");
 
 if (!document.cookie.includes("cookies-displayed=true")) {
-  cookiesPopup.style.display = "grid";
+  cookiesPopup.classList.remove("cookies-hidden");
 } else {
-  cookiesPopup.style.display = "none";
+  cookiesPopup.classList.add("cookies-hidden");
 }
 
 cookiesPopup.lastElementChild.addEventListener("click", () => {
-  cookiesPopup.style.display = "none";
-  document.cookie = "cookies-displayed=true; max-age=3600";
+  cookiesPopup.classList.add("cookies-hidden");
+
+  document.cookie = "cookies-displayed=true; max-age=20";
 });

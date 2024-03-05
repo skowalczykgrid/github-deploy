@@ -8,6 +8,7 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  transition: 0.4s;
   z-index: 200;
 
   background-color: $color-primary-light;
@@ -23,4 +24,10 @@
       cursor: pointer;
     }
   }
+}
+
+.cookies-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 70px);
 }

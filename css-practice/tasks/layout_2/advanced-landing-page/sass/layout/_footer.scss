@@ -79,7 +79,12 @@
       gap: 16px;
 
       li {
+        align-self: flex-start;
         cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+          align-self: center;
+        }
       }
     }
   }
@@ -100,24 +105,5 @@ footer {
     position: absolute;
     z-index: -10;
     overflow-x: hidden;
-
-    @media only screen and (max-width: 768px) {
-      //   right: -300px;
-      //   top: -100px;
-    }
-
-    // @media only screen and (max-width: 600px) {
-    //   right: -100px;
-    //   top: -100px;
-    // }
-
-    // @media only screen and (max-width: 425px) {
-    //   right: -100px;
-    //   top: 0;
-    // }
-    // @media only screen and (max-width: 320px) {
-    //   top: 100px;
-    //   right: -50px;
-    // }
   }
 }
